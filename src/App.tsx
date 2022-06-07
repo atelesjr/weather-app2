@@ -1,3 +1,5 @@
+import '.gl'
+
 function App() {
   return (
     <div>
