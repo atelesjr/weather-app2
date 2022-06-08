@@ -3,20 +3,26 @@ import * as S from './styles'
 const Weather = () => {
   return (
     <S.Weather>
-      <div className="current">
-        26°C
+      <div className="image">
+        x
       </div>
-      <div className="others">
-        <div className="description">
-          <h4>Sunny</h4>
+      <div className="data">
+        <div className="current">
+          26°C
         </div>
-        <div className="max">
-          max: 27°C
-        </div>
-        <div className="min">
-          min: 24°C
+        <div className="others">
+          <div className="description">
+            <h4>Sunny</h4>
+          </div>
+          <div className="minmax">
+            max: 27°C
+          </div>
+          <div className="minmax">
+            min: 24°C
+          </div>
         </div>
       </div>
+
 
     </S.Weather>
   )
