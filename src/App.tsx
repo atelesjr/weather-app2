@@ -1,6 +1,7 @@
-import '.gl'
+import 'styles/global.css'
 
 function App() {
+  console.log(process.env)
   return (
     <div>
       Weather

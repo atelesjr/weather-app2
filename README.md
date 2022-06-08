@@ -1,3 +1,20 @@
+# Weather-app2
+Application to check user's address and the current weather - React, JavaScript(TypeScript), CSS(Styled-Components), Jest + React Testing Lib
+
+## Instructions
+
+- To install this project: **'yarn'** or **'npm i'**
+- To start development project: **'yarn start'**  or **'npm start'**
+
+## Images
+<!-- 
+![trivia](https://github.com/atelesjr/trivia/blob/main/public/img/01.png)
+
+![trivia](https://github.com/atelesjr/trivia/blob/main/public/img/02.png)
+
+![trivia](https://github.com/atelesjr/trivia/blob/main/public/img/03.png) -->
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
