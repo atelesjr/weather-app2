@@ -25,7 +25,6 @@ export const Weather = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 1rem 0;
     border: 1px solid green;
 
     .current {
@@ -34,9 +33,11 @@ export const Weather = styled.div`
 
       border: 1px solid green;
 
-      font-size: 7rem;
+      height: auto;
       margin-right: 1rem;
       box-sizing: border-box;
+
+      font-size: 7rem;
     }
 
     .others {
@@ -54,9 +55,27 @@ export const Weather = styled.div`
         
       }
     }
+  }
 
+  .daylight {
+    display: flex;
+    justify-content: space-around;
 
+    width: 100%;
+    padding: 1rem 0;
 
+    .sunrise, .sunset {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      width: 40%;
+
+      .image {
+        height: 10rem;
+      }
+
+    }
   }
 
 

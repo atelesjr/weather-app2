@@ -1,6 +1,7 @@
 import 'styles/global.css'
 import { Content, Container, Header } from './pages/layout'
 import Weather from 'components/Weather';
+import Location from 'components/Address';
 
 function App() {
   console.log(process.env)
@@ -11,10 +12,7 @@ function App() {
       </Header>
       <Content>
         <Weather />
-
-        <div className="location">
-          Your address:
-        </div>
+        <Location />
       </Content>
 
     </Container>

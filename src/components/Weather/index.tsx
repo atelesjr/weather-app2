@@ -22,6 +22,25 @@ const Weather = () => {
           </div>
         </div>
       </div>
+      
+      <div className="daylight">
+        <div className="sunrise">
+          <div className="image">
+            x
+          </div>
+          <span>
+            Sunrise: 06:40
+          </span>
+        </div>
+        <div className="sunset">
+          <div className="image">
+            x
+          </div>
+          <span>
+          Sunset: 17:30
+          </span>
+        </div>
+      </div>
 
 
     </S.Weather>

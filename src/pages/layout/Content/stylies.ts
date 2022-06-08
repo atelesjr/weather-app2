@@ -11,7 +11,7 @@ export const Content = styled.div`
   max-width: 65rem;
   min-width: 37.5rem;
   box-sizing: border-box;
-  padding: 1rem;
+  padding: 1rem 0 2rem;
 
   border: .2rem solid red;
 `
