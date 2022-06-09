@@ -1,44 +1,114 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import * as S from './styles'
+//images
+import Humidity from 'assets/svg/humidity.svg'
+import Wind from 'assets/svg/wind.svg'
+import Direction from 'assets/svg/direction.svg'
+//context
+import { Context } from 'context'
+// services
+import { getCurrentWeather } from 'services'
+// utils
+import { getLocation, weatherConversion }from 'utils'
 
 const Weather = () => {
+
+  const { currentWeather, setCurrentWeather, setLoading } = useContext(Context)
+  const [ positions, setPositions] = useState({ lat: 0, lon: 0})
+  const [ weatherDescription, setWeatherDescription ] = useState({ description: '', icon: ''})
+  
+  useLayoutEffect(() => {
+    
+    getLocation()
+    .then( res => setPositions({ lat: res?.lat, lon: res?.lon }) )
+    .catch( err => console.log('err', err))
+
+  }, [])
+
+
+  
+  useEffect(() => {
+    setLoading(true)
+    const getWeather = async (lat:number, long:number) => {
+      const data = await getCurrentWeather(lat, long)
+      console.log('getWeather', data)
+      setCurrentWeather && setCurrentWeather(data)
+    }
+
+    getWeather(positions?.lat, positions?.lat)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500);
+   
+ 
+  }, [positions, setCurrentWeather])
+
+  useEffect(() => {
+    currentWeather.weather && (
+      setWeatherDescription( { 
+        description: currentWeather.weather[0].description,
+        icon: currentWeather.weather[0].icon
+      } )
+    )
+
+  }, [currentWeather])
+  
+  const getIcon = (icon:string) => <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="current temperature" />
+
+  console.log(currentWeather)
+
+
+
   return (
-    <S.Weather>
+    <S.Weather deg={currentWeather?.wind?.deg}>
       <div className="image">
-        x
+        { getIcon(weatherDescription.icon) }
       </div>
       <div className="data">
         <div className="current">
-          26°C
+          {
+            
+           `${ weatherConversion(currentWeather?.main?.temp , 'KC')}°C`
+          }
         </div>
         <div className="others">
           <div className="description">
-            <h4>Sunny</h4>
+            <h4>{ weatherDescription.description }
+            </h4>
           </div>
           <div className="minmax">
-            max: 27°C
+            {`
+              max: ${ weatherConversion(currentWeather?.main?.temp_max , 'KC')}°C
+            `}
           </div>
           <div className="minmax">
-            min: 24°C
+            {`
+              min: ${ weatherConversion(currentWeather?.main?.temp_min , 'KC')}°C
+            `}
           </div>
         </div>
       </div>
       
-      <div className="daylight">
-        <div className="sunrise">
-          <div className="image">
-            x
+      <div className="air">
+        <div className="humidity">
+          <div className="image-humidity">
+            <img src={Humidity} alt="humidity icon" />
           </div>
           <span>
-            Sunrise: 06:40
+            Humidity: { currentWeather?.main?.humidity }
           </span>
         </div>
-        <div className="sunset">
-          <div className="image">
-            x
+        <div className="wind">
+          <div className="image-wind">
+            <img src={Wind} alt="wind icon" />
           </div>
-          <span>
-          Sunset: 17:30
-          </span>
+          <div className='speed'>
+            <span>Wind: { currentWeather?.wind?.speed }</span>
+            <img src={Direction} alt="direction icon"  className='direction'/>
+          </div>
+
         </div>
       </div>
 

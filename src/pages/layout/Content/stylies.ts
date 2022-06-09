@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from 'styles/themes'
 
 export const Content = styled.div`
   display: flex;
@@ -7,11 +8,12 @@ export const Content = styled.div`
   align-items: center;
   flex: 1;
 
+  position: relative;
+
   width: 100%;
   max-width: 65rem;
   min-width: 37.5rem;
   box-sizing: border-box;
-  padding: 1rem 0 2rem;
-
-  border: .2rem solid red;
+  padding: 0 0 2rem;
+  background-color: ${ colors.white };
 `

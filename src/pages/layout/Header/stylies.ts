@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from 'styles/themes'
 
 export const Header = styled.div`
   display: flex;
@@ -11,6 +12,9 @@ export const Header = styled.div`
   min-width: 37.5rem;
   box-sizing: border-box;
   padding: 1rem;
+  background-color: ${ colors.grayDark };
 
-  border: .2rem solid blue;
+  color:  ${ colors.white };
+
+
 `

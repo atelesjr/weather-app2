@@ -1,6 +1,5 @@
 import * as S from './styles'
 
-
 const Location = () => {
   return (
     <S.Location>

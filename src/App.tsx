@@ -1,10 +1,18 @@
+import { useContext } from 'react';
 import 'styles/global.css'
-import { Content, Container, Header } from './pages/layout'
+//layout
+import { Content, Container, Header, Popover } from './pages/layout'
+// context
+import { Context } from 'context';
+// components
 import Weather from 'components/Weather';
 import Location from 'components/Address';
+import Spinner from 'components/Spinner';
+
 
 function App() {
   console.log(process.env)
+  const { loading } = useContext(Context)
   return (
     <Container>
       <Header>
@@ -13,6 +21,14 @@ function App() {
       <Content>
         <Weather />
         <Location />
+        {
+          loading && (
+            <Popover>
+              <Spinner />
+            </Popover>
+          )
+        }
+
       </Content>
 
     </Container>

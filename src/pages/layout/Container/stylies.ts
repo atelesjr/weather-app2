@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from 'styles/themes'
 
 export const Container = styled.div`
   display: flex;
@@ -10,4 +11,5 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
+  background-color: ${ colors.grayDark };
 `
