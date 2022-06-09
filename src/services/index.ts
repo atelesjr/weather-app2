@@ -1,6 +1,5 @@
 import axios from "axios"
 
-
 interface weatherType {
   id: number
   description: string
@@ -31,5 +30,17 @@ export const getCurrentWeather = async (lat:number, lon:number): Promise<typeCur
   .then( res => res.data)
   .catch( error => console.log(error))
  
+  return data
+}
+
+const googleAPI = `https://maps.googleapis.com/maps/api/geocode/json`
+
+export const getAddress =async (lat:number, lon:number) => {
+  const data = await axios.get(
+    `${googleAPI}?latlng=${lat},${lon}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}}`
+  )
+  .then( res => console.log(res.data))
+  .catch( error => console.log(error ))
+
   return data
 }

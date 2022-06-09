@@ -48,8 +48,6 @@ export const Weather = styled.div<WheaterStyle>`
       box-sizing: border-box;
 
       font-size: 7rem;
-
-     
     }
 
     .others {

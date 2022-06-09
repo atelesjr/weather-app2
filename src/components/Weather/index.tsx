@@ -14,14 +14,17 @@ import { getLocation, weatherConversion }from 'utils'
 
 const Weather = () => {
 
-  const { currentWeather, setCurrentWeather, setLoading } = useContext(Context)
-  const [ positions, setPositions] = useState({ lat: 0, lon: 0})
+  const { 
+    currentWeather, setCurrentWeather, 
+    setLoading ,
+    position, setPosition
+  } = useContext(Context)
   const [ weatherDescription, setWeatherDescription ] = useState({ description: '', icon: ''})
   
   useLayoutEffect(() => {
     
     getLocation()
-    .then( res => setPositions({ lat: res?.lat, lon: res?.lon }) )
+    .then( res => setPosition({ lat: res?.lat, lon: res?.lon }) )
     .catch( err => console.log('err', err))
 
   }, [])
@@ -32,18 +35,17 @@ const Weather = () => {
     setLoading(true)
     const getWeather = async (lat:number, long:number) => {
       const data = await getCurrentWeather(lat, long)
-      console.log('getWeather', data)
-      setCurrentWeather && setCurrentWeather(data)
+      data && setCurrentWeather(data)
     }
 
-    getWeather(positions?.lat, positions?.lat)
+    getWeather(position?.lat, position?.lat)
 
     setTimeout(() => {
       setLoading(false)
     }, 1500);
    
  
-  }, [positions, setCurrentWeather])
+  }, [position, setCurrentWeather])
 
   useEffect(() => {
     currentWeather.weather && (
